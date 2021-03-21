@@ -4,7 +4,7 @@ import song from './files/song.mp3'
 const App = () => {
   return (
     <React.Fragment>
-      <AudioPlayer sorce={song} />
+      <AudioPlayer source={song} />
     </React.Fragment>
   )
 }
