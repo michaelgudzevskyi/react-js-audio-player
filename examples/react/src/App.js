@@ -1,10 +1,10 @@
 import React from 'react'
-import { Text } from 'react-js-audio-player'
-
+import AudioPlayer from 'react-js-audio-player'
+import song from './files/song.mp3'
 const App = () => {
   return (
     <React.Fragment>
-      <Text>Hi Text Component</Text>
+      <AudioPlayer sorce={song} />
     </React.Fragment>
   )
 }

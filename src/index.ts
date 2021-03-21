@@ -1,3 +1,3 @@
-import Text from './components/text/Text'
+import AudioPlayer from './components/player'
 
-export { Text }
+export default AudioPlayer
