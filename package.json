@@ -2,7 +2,9 @@
   "name": "react-js-audio-player",
   "version": "1.0.0",
   "description": "This is a light React wrapper around the HTML5 audio tag. It provides the ability to manipulate the player and listen to events through a nice React interface.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.modern.js",
+  "umd:main": "dist/index.umd.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
@@ -20,6 +22,9 @@
     "type": "git",
     "url": "git+https://github.com/michaelgudzevskyi/react-js-audio-player.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "audio",
     "player",
@@ -77,6 +82,11 @@
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-uglify": "^6.0.4",
+    "styled-components": "^5.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "prop-types": "^15.7.2",
     "styled-components": "^5.1.1"
   },
   "bugs": {
