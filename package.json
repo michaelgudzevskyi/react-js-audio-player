@@ -4,7 +4,17 @@
   "description": "This is a light React wrapper around the HTML5 audio tag. It provides the ability to manipulate the player and listen to events through a nice React interface.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "rimraf dist",
+    "build": "rollup -c",
+    "watch": "rollup -c --watch",
+    "dev": "concurrently \" npm run watch \" \" npm run start --prefix examples/react \"  ",
+    "test": "run-s test:unit test:lint test:build",
+    "test:lint": "eslint src/**/*.js",
+    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/components/**/*.js",
+    "test:build": "run-s build",
+    "lint:fix": "prettier-eslint '**/*.js' --write",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +27,16 @@
   ],
   "author": "Michael Gudzevskyi",
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "npm run lint:fix"
+    ]
+  },
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
@@ -25,7 +45,6 @@
     "@testing-library/react": "^10.4.1",
     "@testing-library/user-event": "^12.0.7",
     "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.1.0",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-styled-components": "^1.10.7",
     "concurrently": "^5.2.0",
