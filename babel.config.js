@@ -9,7 +9,14 @@ module.exports = function (api) {
         targets: { browsers: '> 0.25%, ie 11, not op_mini all, not dead' }
       }
     ],
-    '@babel/preset-react'
+    '@babel/preset-react',
+    [
+      '@babel/preset-typescript',
+      {
+        isTSX: true,
+        allExtensions: true
+      }
+    ]
   ]
   const plugins = ['macros', 'babel-plugin-styled-components']
 
